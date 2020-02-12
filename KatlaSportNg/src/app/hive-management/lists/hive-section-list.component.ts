@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HiveSectionListItem } from '../models/hive-section-list-item';
 import { HiveService } from '../services/hive.service';
+import { HiveSectionService } from '../services/hive-section.service';
 
 @Component({
   selector: 'app-hive-section-list',
@@ -16,7 +17,8 @@ export class HiveSectionListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private hiveService: HiveService
+    private hiveService: HiveService,
+    private hiveSectionService:HiveSectionService
   ) { }
 
   ngOnInit() 
@@ -24,5 +26,17 @@ export class HiveSectionListComponent implements OnInit {
     this.route.params.subscribe(p => {
       this.hiveId = p['id'];
       this.hiveService.getHiveSections(this.hiveId).subscribe(s => this.hiveSections = s);})
+  }
+
+  onDelete(hiveId: number) {
+    var hive = this.hiveSections.find(h => h.id == hiveId);
+    this.hiveSectionService.setHiveSectionStatus(hiveId, true).subscribe(c => hive.isDeleted = true);
+  }
+
+  onRestore(hiveId: number) 
+  {
+    var hive = this.hiveSections.find(h => h.id == hiveId);
+    this.hiveSectionService.setHiveSectionStatus(hiveId, false).subscribe(c => hive.isDeleted = false);
+
   }
 }
