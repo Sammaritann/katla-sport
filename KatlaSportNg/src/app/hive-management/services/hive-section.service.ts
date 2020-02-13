@@ -21,6 +21,18 @@ export class HiveSectionService {
     return this.http.get<HiveSection>(`${this.url}${hiveSectionId}`);
   }
 
+  addHiveSection(hive: HiveSection): Observable<HiveSection> {
+    return this.http.post<HiveSection>(`${this.url}`,hive);
+  }
+
+  updateHiveSection(hive: HiveSection): Observable<Object> {
+    return this.http.put<HiveSection>(`${this.url}${hive.id}`,hive);
+  }
+
+  deleteHiveSection(hiveId: number): Observable<Object> {
+    return this.http.delete(`${this.url}${hiveId}`);
+  }
+
   setHiveSectionStatus(hiveSectionId: number, deletedStatus: boolean): Observable<Object> {
     return this.http.put(`${this.url}${hiveSectionId}/status/${deletedStatus}`,null);
   }
