@@ -10,7 +10,9 @@ import { ProductFormComponent } from './product-management/forms/product-form.co
 import { ProductCategoryListComponent } from './product-management/lists/product-category-list.component';
 import { ProductCategoryProductListComponent } from './product-management/lists/product-category-product-list.component';
 import { ProductListComponent } from './product-management/lists/product-list.component';
-import {EmploeeComponent} from './office-management/forms/emploee.component';
+import { OfficeListComponent } from './office-management/list/office-list/office-list.component';
+import { EmploeeComponent } from './office-management/forms/emploee/emploee.component';
+import { OfficeComponent } from './office-management/forms/office/office.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -27,6 +29,10 @@ const routes: Routes = [
   { path: 'hive/:id', component: HiveFormComponent },
   { path: 'hive/:id/sections', component: HiveSectionListComponent },
   { path: 'section/:id', component: HiveSectionFormComponent },
+  { path: 'offices',component:OfficeListComponent},
+  { path: 'office',component:OfficeComponent},
+  { path: 'office/:id',component:OfficeComponent},
+  { path: 'staff',component:EmploeeComponent},
   { path: 'staff/:id', component:EmploeeComponent},
 ];
 

@@ -19,7 +19,10 @@ import { ProductCategoryProductListComponent } from 'app/product-management/list
 import { ProductListComponent } from 'app/product-management/lists/product-list.component';
 import { ProductCategoryService } from 'app/product-management/services/product-category.service';
 import { ProductService } from 'app/product-management/services/product.service';
-import { EmploeeComponent } from './office-management/forms/emploee.component';
+import { OfficeListComponent } from './office-management/list/office-list/office-list.component';
+import { EmploeeComponent } from './office-management/forms/emploee/emploee.component';
+import { OfficeComponent } from './office-management/forms/office/office.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { EmploeeComponent } from './office-management/forms/emploee.component';
     HiveSectionFormComponent,
     HiveSectionListComponent,
     EmploeeComponent,
+    OfficeListComponent,
+    OfficeComponent,
   ],
   imports: [
     // Angular imports

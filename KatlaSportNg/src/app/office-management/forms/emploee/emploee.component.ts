@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {Employee} from '../models/emploee'
-import {EmployeeService} from '../services/emploee-service.service'
-import { createOfflineCompileUrlResolver } from '@angular/compiler';
-import { DebugContext } from '@angular/core/src/view';
-import { StringDecoder } from 'string_decoder';
+import { Employee } from 'app/office-management/models/emploee';
+import { EmployeeService } from 'app/office-management/services/emploee-service.service';
 
 @Component({
   selector: 'app-emploee',
@@ -15,6 +12,7 @@ export class EmploeeComponent implements OnInit {
 
   employee = new Employee(0,"","","",0,null);
   fileInput = new File(['a','b','c'],"");
+  existed = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,13 +23,35 @@ export class EmploeeComponent implements OnInit {
   ngOnInit() {    this.route.params.subscribe(p => { 
     if (p['id'] === undefined) return;
     this.employeeService.getEmployee(p['id']).subscribe(h => this.employee = h);
+    this.existed = true;
   });
   }
 
-  onSubmit() {
-     console.log(this.employee.avatar);
-      this.employeeService.updateEmployee(this.employee).subscribe(p=>this.router.navigate(["/main"]));
+  navigateToStaf() {
+    this.router.navigate(['/staf']);
+  }
 
+  onCancel() {
+    this.navigateToStaf();
+  }
+  
+  onSubmit() {
+    if(this.existed)
+    {
+      this.employeeService.updateEmployee(this.employee).subscribe(p=>this.navigateToStaf());
+    }
+    else
+    {
+      this.employeeService.addEmployee(this.employee).subscribe(p=>this.navigateToStaf());
+    }
+  }
+
+  onDelete() 
+  {
+    if(this.existed)
+    {
+      this.employeeService.deleteEmployee(this.employee.id).subscribe(p=> this.navigateToStaf());
+    }
   }
 
   onFileChange(event) {

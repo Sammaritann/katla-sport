@@ -1,5 +1,3 @@
-import { Binary } from "@angular/compiler";
-
 export class Employee {
     constructor(
         public id: number,
