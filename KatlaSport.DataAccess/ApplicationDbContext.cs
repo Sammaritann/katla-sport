@@ -2,6 +2,7 @@
 using System.Reflection;
 using KatlaSport.DataAccess.CustomerCatalogue;
 using KatlaSport.DataAccess.Migrations;
+using KatlaSport.DataAccess.OfficeCatalogue;
 using KatlaSport.DataAccess.ProductCatalogue;
 using KatlaSport.DataAccess.ProductStore;
 using KatlaSport.DataAccess.ProductStoreHive;
@@ -68,6 +69,21 @@ namespace KatlaSport.DataAccess
         /// Gets or sets a <see cref="DbSet"/> for <see cref="Customer"/>.
         /// </summary>
         public DbSet<Customer> Customers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the employees.
+        /// </summary>
+        public DbSet<Employee> Employees { get; set; }
+
+        /// <summary>
+        /// Gets or sets the offices.
+        /// </summary>
+        public DbSet<Office> Offices { get; set; }
+
+        /// <summary>
+        /// Gets or sets the required inventories.
+        /// </summary>
+        public DbSet<RequiredInventory> RequiredInventories { get; set; }
 
         /// <summary>
         /// Overrides base method.

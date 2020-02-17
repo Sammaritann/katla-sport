@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using KatlaSport.Services.OfficeManagement;
+using KatlaSport.Services.RequaredInventoryManagement;
 
 namespace KatlaSport.Services
 {
@@ -18,6 +20,9 @@ namespace KatlaSport.Services
             builder.RegisterType<HiveManagement.HiveService>().As<HiveManagement.IHiveService>();
             builder.RegisterType<HiveManagement.HiveSectionService>().As<HiveManagement.IHiveSectionService>();
             builder.RegisterType<UserContext>().As<IUserContext>();
+            builder.RegisterType<EmployeeService>().As<IEmployeeService>();
+            builder.RegisterType<OfficeService>().As<IOfficeService>();
+            builder.RegisterType<RequaredInventoryService>().As<IRequaredInventoryService>();
         }
     }
 }
