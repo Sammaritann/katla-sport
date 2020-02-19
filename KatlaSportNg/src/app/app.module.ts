@@ -22,6 +22,9 @@ import { ProductService } from 'app/product-management/services/product.service'
 import { OfficeListComponent } from './office-management/list/office-list/office-list.component';
 import { EmploeeComponent } from './office-management/forms/emploee/emploee.component';
 import { OfficeComponent } from './office-management/forms/office/office.component';
+import { EmployeeListComponent } from './office-management/list/employee-list/employee-list.component';
+import { ItemListComponent } from './office-management/list/item-list/item-list.component';
+import { ItemComponent } from './office-management/forms/item/item.component';
 
 
 @NgModule({
@@ -40,6 +43,9 @@ import { OfficeComponent } from './office-management/forms/office/office.compone
     EmploeeComponent,
     OfficeListComponent,
     OfficeComponent,
+    EmployeeListComponent,
+    ItemListComponent,
+    ItemComponent,
   ],
   imports: [
     // Angular imports

@@ -3,7 +3,6 @@ using KatlaSport.WebApi.CustomFilters;
 using Microsoft.Web.Http;
 using Swashbuckle.Swagger.Annotations;
 using System;
-
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -34,6 +33,18 @@ namespace KatlaSport.WebApi.Controllers
         {
             var employees = await _employeeService.GetEmployeesAsync();
             return Ok(employees);
+        }
+
+        [HttpGet]
+        [Route("{id:int:min(1)}/office")]
+        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of inventorys")]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
+        public async Task<IHttpActionResult> GetEmployeeAsync(int id)
+        {
+            var dbRequiredInventorys = await _employeeService.GetOfficeEmployeesAsync(id);
+
+            return Ok(dbRequiredInventorys);
         }
 
         [HttpGet]

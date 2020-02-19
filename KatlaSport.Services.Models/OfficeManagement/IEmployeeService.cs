@@ -17,6 +17,14 @@ namespace KatlaSport.Services.OfficeManagement
         Task<List<EmployeeItem>> GetEmployeesAsync();
 
         /// <summary>
+        /// Gets a employees list.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="Task{List{EmployeeItem}}" />.
+        /// </returns>
+        Task<List<EmployeeItem>> GetOfficeEmployeesAsync(int officeId);
+
+        /// <summary>
         /// Gets a employee with specified identifier.
         /// </summary>
         /// <param name="employeeId">A employee identifier.</param>

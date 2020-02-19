@@ -1,6 +1,6 @@
-﻿using KatlaSport.Services.OfficeManagement;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KatlaSport.Services.OfficeManagement;
 
 namespace KatlaSport.Services.RequaredInventoryManagement
 {
@@ -16,6 +16,14 @@ namespace KatlaSport.Services.RequaredInventoryManagement
         /// A <see cref="Task{List{RequiredInventoryItem}}" />.
         /// </returns>
         Task<List<RequiredInventoryItem>> GetRequaredInventorysAsync();
+
+        /// <summary>
+        /// Gets a requiredInventorys list.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="Task{List{RequiredInventoryItem}}" />.
+        /// </returns>
+        Task<List<RequiredInventoryItem>> GetOfficeRequaredInventorysAsync(int officeId);
 
         /// <summary>
         /// Gets a requiredInventory with specified identifier.

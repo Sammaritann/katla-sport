@@ -11,8 +11,11 @@ import { ProductCategoryListComponent } from './product-management/lists/product
 import { ProductCategoryProductListComponent } from './product-management/lists/product-category-product-list.component';
 import { ProductListComponent } from './product-management/lists/product-list.component';
 import { OfficeListComponent } from './office-management/list/office-list/office-list.component';
-import { EmploeeComponent } from './office-management/forms/emploee/emploee.component';
 import { OfficeComponent } from './office-management/forms/office/office.component';
+import { EmployeeListComponent } from './office-management/list/employee-list/employee-list.component';
+import { ItemListComponent } from './office-management/list/item-list/item-list.component';
+import { EmploeeComponent } from './office-management/forms/emploee/emploee.component';
+import { ItemComponent } from './office-management/forms/item/item.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -32,9 +35,16 @@ const routes: Routes = [
   { path: 'offices',component:OfficeListComponent},
   { path: 'office',component:OfficeComponent},
   { path: 'office/:id',component:OfficeComponent},
-  { path: 'staff',component:EmploeeComponent},
-  { path: 'staff/:id', component:EmploeeComponent},
-];
+  { path: 'office/:id/staf',component:EmployeeListComponent},
+  { path: 'office/:id/items',component:ItemListComponent},
+  { path: 'employee/:id', component:EmploeeComponent},
+  { path: 'employee/:officeId', component:EmploeeComponent},
+  { path: 'item', component:ItemComponent},
+  { path: 'item/:id', component:ItemComponent},
+  { path: 'item/:parentId/child', component:ItemComponent},
+  { path: 'items/:descendantId', component:ItemListComponent},
+
+]; 
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

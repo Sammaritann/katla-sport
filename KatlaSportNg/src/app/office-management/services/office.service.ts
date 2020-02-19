@@ -9,7 +9,7 @@ import { environment } from 'environments/environment';
 })
 export class OfficeService {
 
-  private url = environment.apiUrl + `api/offices/`;
+  private url = environment.apiUrl + 'api/offices/';
   constructor(private http:HttpClient) { }
 
   getOffices(): Observable<Array<Office>> {

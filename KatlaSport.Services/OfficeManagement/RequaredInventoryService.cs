@@ -32,6 +32,17 @@ namespace KatlaSport.Services.RequaredInventoryManagement
         }
 
         /// <inheritdoc/>
+        public async Task<List<RequiredInventoryItem>> GetOfficeRequaredInventorysAsync(int officeId)
+        {
+            var dbRequaredInventorys = await _context.RequiredInventories.Where(r => r.OfficeId == officeId)
+                .OrderBy(o => o.Id)
+                .ToArrayAsync();
+            var requaredInventorys = dbRequaredInventorys.Select(e => Mapper.Map<RequiredInventoryItem>(e)).ToList();
+
+            return requaredInventorys;
+        }
+
+        /// <inheritdoc/>
         public async Task<RequiredInventoryItem> GetRequaredInventoryAsync(int requaredInventoryId)
         {
             var dbRequaredInventorys = await _context.RequiredInventories.Where(o => o.Id == requaredInventoryId).ToArrayAsync();

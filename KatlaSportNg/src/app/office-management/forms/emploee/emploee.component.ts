@@ -10,7 +10,7 @@ import { EmployeeService } from 'app/office-management/services/emploee-service.
 })
 export class EmploeeComponent implements OnInit {
 
-  employee = new Employee(0,"","","",0,null);
+  employee = new Employee(0,"","","","",1);
   fileInput = new File(['a','b','c'],"");
   existed = false;
 
@@ -21,6 +21,7 @@ export class EmploeeComponent implements OnInit {
   ) { }
 
   ngOnInit() {    this.route.params.subscribe(p => { 
+    if(p['officeId'] !== undefined) this.employee.officeId=p['officeId'];
     if (p['id'] === undefined) return;
     this.employeeService.getEmployee(p['id']).subscribe(h => this.employee = h);
     this.existed = true;
@@ -28,7 +29,7 @@ export class EmploeeComponent implements OnInit {
   }
 
   navigateToStaf() {
-    this.router.navigate(['/staf']);
+    this.router.navigate([`/office/${this.employee.officeId}/staf`]);
   }
 
   onCancel() {

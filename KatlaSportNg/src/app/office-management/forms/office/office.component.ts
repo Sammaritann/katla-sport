@@ -11,7 +11,7 @@ import { OfficeService } from 'app/office-management/services/office.service';
 export class OfficeComponent implements OnInit {
 
   office = new Office(0,"","");
-  existed = true;
+  existed = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,

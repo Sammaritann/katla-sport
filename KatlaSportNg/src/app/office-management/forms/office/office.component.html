@@ -1,6 +1,7 @@
 <div class="container">
   <h2>Office Editor</h2>
   <form (ngSubmit)="onSubmit()" #officeForm="ngForm">
+    
     <div class="form-group">
       <label for="name" id="nameLabel">Office Code</label>
       <input type="text" class="form-control" id="name" aria-describedby="nameLabel" required [(ngModel)]="office.code"
@@ -9,7 +10,7 @@
 
     <div class="form-group">
       <label for="address" id="codeLabel">Office  Address</label>
-      <input type="text" class="form-control" id="address" aria-describedby="addressLabel" required [(ngModel)]="office.address"
+      <input type="text" class="form-control" id="address" aria-describedby="addressLabel" required [(ngModel)]="this.office.address"
         name="address" #address="ngModel">
     </div>
     

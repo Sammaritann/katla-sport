@@ -4,7 +4,6 @@ using KatlaSport.WebApi.CustomFilters;
 using Microsoft.Web.Http;
 using Swashbuckle.Swagger.Annotations;
 using System;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -22,11 +21,9 @@ namespace KatlaSport.WebApi.Controllers
     {
         private readonly IOfficeService _officeService;
 
-        private readonly IRequaredInventoryService _requaredInventoryService;
-        public OfficesController(IOfficeService officeService, IRequaredInventoryService requaredInventory)
+        public OfficesController(IOfficeService officeService)
         {
             _officeService = officeService ?? throw new ArgumentNullException(nameof(officeService));
-            _requaredInventoryService = requaredInventory ?? throw new  ArgumentNullException(nameof(requaredInventory));
         }
 
         [HttpGet]
@@ -49,18 +46,6 @@ namespace KatlaSport.WebApi.Controllers
         {
             var office = await _officeService.GetOfficeAsync(id);
             return Ok(office);
-        }
-
-        [HttpGet]
-        [Route("{id:int:min(1)}/inventorys")]
-        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of inventorys")]
-        [SwaggerResponse(HttpStatusCode.NotFound)]
-        [SwaggerResponse(HttpStatusCode.InternalServerError)]
-        public async Task<IHttpActionResult> GetInventoryAsync(int id)
-        {
-            var dbRequiredInventorys = await _requaredInventoryService.GetRequaredInventorysAsync();
-            var requiredInventorys = dbRequiredInventorys.Where(i => i.OfficeId == id);
-            return Ok(requiredInventorys);
         }
 
 

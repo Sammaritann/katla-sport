@@ -38,6 +38,19 @@ namespace KatlaSport.WebApi.Controllers
             return Ok(requaredInventorys);
         }
 
+
+        [HttpGet]
+        [Route("{id:int:min(1)}/office")]
+        [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a list of inventorys")]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
+        public async Task<IHttpActionResult> GetInventoryAsync(int id)
+        {
+            var dbRequiredInventorys = await _requaredInventoryService.GetOfficeRequaredInventorysAsync(id);
+
+            return Ok(dbRequiredInventorys);
+        }
+
         [HttpGet]
         [Route("{id:int:min(1)}")]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Returns a requaredInventory.")]

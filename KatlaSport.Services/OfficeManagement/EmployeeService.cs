@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using KatlaSport.DataAccess;
 using KatlaSport.DataAccess.OfficeCatalogue;
 
 namespace KatlaSport.Services.OfficeManagement
@@ -29,6 +28,18 @@ namespace KatlaSport.Services.OfficeManagement
         {
             var dbEmployees = await _repository.GetStafAsync();
             var employees = dbEmployees.Select(e => Mapper.Map<EmployeeItem>(e)).ToList();
+
+            return employees;
+        }
+
+        /// <inheritdoc/>
+        public async Task<List<EmployeeItem>> GetOfficeEmployeesAsync(int officeId)
+        {
+            var dbEmployees = await _repository.GetStafAsync();
+            var employees = dbEmployees
+                .Where(e => e.OfficeId == officeId)
+                .Select(e => Mapper.Map<EmployeeItem>(e))
+                .ToList();
 
             return employees;
         }

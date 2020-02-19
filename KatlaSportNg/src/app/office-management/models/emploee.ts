@@ -3,8 +3,8 @@ export class Employee {
         public id: number,
         public name: string,
         public address: string,
-        public phone: string,
-        public officeId:number,
-        public avatar: string
+        public phone: string,        
+        public avatar: string,
+        public officeId:number
     ) { }
 }
